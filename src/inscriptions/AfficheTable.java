@@ -11,6 +11,7 @@ import net.proteanit.sql.DbUtils;
 public class AfficheTable {
 	public static void AfficheTableCompetition(Connection connection, JTable tableCompetition)
 	{
+		/*  blabla */
 		try
 		{
 			String query = "select * from competition";
