@@ -1,4 +1,4 @@
-package inscriptions;
+package sql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import metier.Personne;
 
 public class RequeteInsert {
 	
@@ -92,7 +94,7 @@ public class RequeteInsert {
 
 	}
 	
-	public static void InsertPersonne(Connection connection, JTextField textFieldNompers, JTextField textFieldPrenompers, JTextField textFieldEmailpers)
+	public static void InsertPersonne(Connection connection, Personne modifierPersonne)
 	{
 		try
 		{
@@ -111,9 +113,9 @@ public class RequeteInsert {
 				String query3 = "INSERT INTO personne(id_candP,nom,prenom, mail) VALUES (?,?,?,?)";
 				PreparedStatement pst3 = connection.prepareStatement(query3);
 				pst3.setInt(1, n);
-				pst3.setString(2, textFieldNompers.getText());
-				pst3.setString(3, textFieldPrenompers.getText());
-				pst3.setString(4, textFieldEmailpers.getText());
+				pst3.setString(2, modifierPersonne.getNom());
+				pst3.setString(3, modifierPersonne.getPrenom());
+				pst3.setString(4, modifierPersonne.getMail());
 					pst3.execute();
 
 				pst2.close();

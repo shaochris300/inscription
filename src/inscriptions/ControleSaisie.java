@@ -1,4 +1,4 @@
-package inscriptions;
+package sql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import metier.Personne;
 
 public class ControleSaisie {
 	
@@ -44,12 +46,12 @@ public class ControleSaisie {
 		return valeur;
 	}
 	
-	public static int VerifPersonne(Connection connection, JTextField textFieldNompers, JTextField textFieldPrenompers, JTextField textFieldEmailpers)
+	public static int VerifPersonne(Connection connection, Personne modifierPersonne)
 	{
 		int valeur = 0;
 		try
 		{
-			String query = "SELECT * FROM personne WHERE nom = '"+textFieldNompers.getText()+"' AND prenom ='"+textFieldPrenompers.getText()+"' AND mail = '"+textFieldEmailpers.getText()+"'";
+			String query = "SELECT * FROM personne WHERE nom = '"+modifierPersonne.getNom()+"' AND prenom ='"+modifierPersonne.getPrenom()+"' AND mail = '"+modifierPersonne.getMail()+"'";
 			PreparedStatement pst = connection.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			
@@ -59,7 +61,7 @@ public class ControleSaisie {
 			}
 			else
 			{
-				if(textFieldNompers.getText().isEmpty()|| textFieldPrenompers.getText().isEmpty() || textFieldEmailpers.getText().isEmpty() )
+				if(modifierPersonne.getNom().isEmpty()|| modifierPersonne.getPrenom().isEmpty() || modifierPersonne.getMail().isEmpty() )
 				{
 					valeur = 2;
 				}

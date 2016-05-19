@@ -1,15 +1,29 @@
 package inscriptions;
 
 import java.awt.*;
+
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
+import sql.AfficheTable;
+import sql.ControleSaisie;
+import sql.Refresh;
+import sql.RemplirBarreSaisie;
+import sql.RequeteDelete;
+import sql.RequeteInsert;
+import sql.RequeteUpdate;
+import sql.SqlConnection;
+import sql.loadlist;
+
 import java.sql.*;
 import java.time.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 
-public class vue {
+import metier.Inscriptions;
+import metier.Personne;
 
+public class vue {
+	/* */
 	private JFrame frame;
 	private JTextField textFieldNompers, textFieldPrenompers, textFieldEmailpers, textFieldNomequi, textFieldIdcandP, textFieldIdcandE, textFieldDatecloture, textFieldNomcomp, textFieldIdcomp;
 	private JList listPersonne, listEquipe,listEquipe2, listCompetition,listCompetition2, listCandidat;
@@ -402,7 +416,9 @@ public class vue {
 		JButton btnCreerPers = new JButton("Cr\u00E9er");
 		btnCreerPers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int valeur = ControleSaisie.VerifPersonne(connection, textFieldNompers, textFieldPrenompers, textFieldEmailpers);
+				Inscriptions inscriptions = Inscriptions.getInscriptions();
+				Personne modifierPersonne = inscriptions.createPersonne(textFieldNompers.getText(), textFieldPrenompers.getText(), textFieldEmailpers.getText());
+				int valeur = ControleSaisie.VerifPersonne(connection, modifierPersonne);
 				
 				if(valeur == 1)
 				{
@@ -416,7 +432,7 @@ public class vue {
 					}
 					else
 					{
-						RequeteInsert.InsertPersonne(connection, textFieldNompers, textFieldPrenompers, textFieldEmailpers);
+						RequeteInsert.InsertPersonne(connection,modifierPersonne);
 						Refresh.refreshTablePersonne(tablePersonne, connection);
 					}
 				}
@@ -428,7 +444,9 @@ public class vue {
 		JButton btnModifierPers = new JButton("Modifier");
 		btnModifierPers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int valeur = ControleSaisie.VerifPersonne(connection, textFieldNompers, textFieldPrenompers, textFieldEmailpers);
+				Inscriptions inscriptions = Inscriptions.getInscriptions();
+				Personne modifierPersonne = inscriptions.createPersonne(textFieldNompers.getText(), textFieldPrenompers.getText(), textFieldEmailpers.getText());
+				int valeur = ControleSaisie.VerifPersonne(connection, modifierPersonne);
 				
 				if(valeur == 1)
 				{
@@ -453,7 +471,9 @@ public class vue {
 		JButton btnSupprimerPers = new JButton("Supprimer");
 		btnSupprimerPers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int valeur = ControleSaisie.VerifPersonne(connection, textFieldNompers, textFieldPrenompers, textFieldEmailpers);
+				Inscriptions inscriptions = Inscriptions.getInscriptions();
+				Personne modifierPersonne = inscriptions.createPersonne(textFieldNompers.getText(), textFieldPrenompers.getText(), textFieldEmailpers.getText());
+				int valeur = ControleSaisie.VerifPersonne(connection, modifierPersonne);
 				
 				if(valeur == 1)
 				{
