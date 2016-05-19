@@ -1,5 +1,5 @@
 package inscriptions;
-
+/* blabla */
 import java.awt.*;
 
 import javax.swing.*;
