@@ -63,6 +63,7 @@ public class vue {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		Inscriptions inscriptions = Inscriptions.getInscriptions();
 		
 		JLabel image = new JLabel(new ImageIcon("images/logo.png"));
 		image.setBounds(108, 23, 767, 230);
@@ -108,7 +109,7 @@ public class vue {
 		panelCompetition.add(rdbtnNon);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(0, 0, 535, 327);
+		scrollPane_2.setBounds(-51, 0, 535, 327);
 		panelCompetition.add(scrollPane_2);
 		
 		tableCompetition = new JTable();
@@ -416,7 +417,6 @@ public class vue {
 		JButton btnCreerPers = new JButton("Cr\u00E9er");
 		btnCreerPers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Inscriptions inscriptions = Inscriptions.getInscriptions();
 				Personne modifierPersonne = inscriptions.createPersonne(textFieldNompers.getText(), textFieldPrenompers.getText(), textFieldEmailpers.getText());
 				int valeur = ControleSaisie.VerifPersonne(connection, modifierPersonne);
 				

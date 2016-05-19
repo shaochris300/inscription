@@ -46,12 +46,12 @@ public class ControleSaisie {
 		return valeur;
 	}
 	
-	public static int VerifPersonne(Connection connection, Personne modifierPersonne)
+	public static int VerifPersonne(Connection connection, Personne personne)
 	{
 		int valeur = 0;
 		try
 		{
-			String query = "SELECT * FROM personne WHERE nom = '"+modifierPersonne.getNom()+"' AND prenom ='"+modifierPersonne.getPrenom()+"' AND mail = '"+modifierPersonne.getMail()+"'";
+			String query = "SELECT * FROM personne WHERE nom = '"+personne.getNom()+"' AND prenom ='"+personne.getPrenom()+"' AND mail = '"+personne.getMail()+"'";
 			PreparedStatement pst = connection.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			
@@ -61,7 +61,7 @@ public class ControleSaisie {
 			}
 			else
 			{
-				if(modifierPersonne.getNom().isEmpty()|| modifierPersonne.getPrenom().isEmpty() || modifierPersonne.getMail().isEmpty() )
+				if(personne.getNom().isEmpty()|| personne.getPrenom().isEmpty() || personne.getMail().isEmpty() )
 				{
 					valeur = 2;
 				}

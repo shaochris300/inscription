@@ -94,7 +94,7 @@ public class RequeteInsert {
 
 	}
 	
-	public static void InsertPersonne(Connection connection, Personne modifierPersonne)
+	public static void InsertPersonne(Connection connection, Personne personne)
 	{
 		try
 		{
@@ -113,9 +113,9 @@ public class RequeteInsert {
 				String query3 = "INSERT INTO personne(id_candP,nom,prenom, mail) VALUES (?,?,?,?)";
 				PreparedStatement pst3 = connection.prepareStatement(query3);
 				pst3.setInt(1, n);
-				pst3.setString(2, modifierPersonne.getNom());
-				pst3.setString(3, modifierPersonne.getPrenom());
-				pst3.setString(4, modifierPersonne.getMail());
+				pst3.setString(2, personne.getNom());
+				pst3.setString(3, personne.getPrenom());
+				pst3.setString(4, personne.getMail());
 					pst3.execute();
 
 				pst2.close();

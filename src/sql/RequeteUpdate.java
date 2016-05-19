@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import metier.Personne;
+
 public class RequeteUpdate {
 	
 	public static void UpdateCompetition(Connection connection, JTextField textFieldNomcomp, JTextField textFieldDatecloture, JRadioButton rdbtnOui, JTextField textFieldIdcomp)
@@ -33,7 +35,7 @@ public class RequeteUpdate {
 		}
 	}
 	
-	public static void UpdatePersonne(Connection connection, JTextField textFieldNompers, JTextField textFieldPrenompers, JTextField textFieldEmailpers, JTextField textFieldIdcandP)
+	public static void UpdatePersonne(Connection connection,JTextField textFieldNompers,JTextField textFieldPrenompers, JTextField textFieldEmailpers, JTextField textFieldIdcandP)
 	{
 		try
 		{
