@@ -1,4 +1,4 @@
-package inscriptions;
+package sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,9 +13,10 @@ public class SqlConnection {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://192.168.100.3/inscription";
+			/*String url = "jdbc:mysql://192.168.100.3/inscription";*/
+			String url = "jdbc:mysql://localhost/inscription";
 			String user = "root";
-			Connection c = DriverManager.getConnection(url,user, "root");
+			Connection c = DriverManager.getConnection(url,user, "");
 			JOptionPane.showMessageDialog(null, "Connexion réussi !");
 			return c;
 		}

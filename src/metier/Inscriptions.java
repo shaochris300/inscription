@@ -1,4 +1,4 @@
-package inscriptions;
+package metier;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
