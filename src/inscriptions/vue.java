@@ -422,7 +422,7 @@ public class vue {
 				
 				if(valeur == 1)
 				{
-					JOptionPane.showMessageDialog(null, "Personne déjà existante !");
+					JOptionPane.showMessageDialog(null, "Personne déjà existante !", null, JOptionPane.ERROR_MESSAGE);
 				}
 				else
 				{
