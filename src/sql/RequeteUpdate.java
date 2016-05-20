@@ -35,11 +35,11 @@ public class RequeteUpdate {
 		}
 	}
 	
-	public static void UpdatePersonne(Connection connection,JTextField textFieldNompers,JTextField textFieldPrenompers, JTextField textFieldEmailpers, JTextField textFieldIdcandP)
+	public static void UpdatePersonne(Connection connection,Personne personne, JTextField textFieldIdcandP)
 	{
 		try
 		{
-			String query1 = "UPDATE personne SET nom = '"+ textFieldNompers.getText()+"' , prenom = '"+ textFieldPrenompers.getText()+"' ,mail = '"+ textFieldEmailpers.getText()+"' WHERE id_candP = '"+textFieldIdcandP.getText()+"' ";
+			String query1 = "UPDATE personne SET nom = '"+ personne.getNom()+"' , prenom = '"+ personne.getPrenom()+"' ,mail = '"+ personne.getMail()+"' WHERE id_candP = '"+textFieldIdcandP.getText()+"' ";
 			PreparedStatement pst1 = connection.prepareStatement(query1);
 			pst1.execute();
 				
